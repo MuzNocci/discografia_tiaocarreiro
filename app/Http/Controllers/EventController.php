@@ -46,9 +46,7 @@ class EventController extends Controller
 
         if ($search){
 
-            $musicas = Musica::orderBy('faixa')->where([
-                ['nome', 'like', '%'.$search.'%']
-            ])->get();
+            $musicas = Musica::orderBy('faixa','desc')->where([['nome', 'like', '%'.$search.'%']])->get();
 
             foreach ($musicas as $musica){
                 $albums_auth[] = $musica->album;
@@ -65,7 +63,7 @@ class EventController extends Controller
         return view('admin.dashboard', ['albums' => $albums, 'musicas' => $musicas, 'album_auth' => $albums_auth, 'search' => $search, 'registros' => count($musicas)]);
     }
 
-    public function add_music(){
+    public function adicionar_music(){
 
         $albums = Album::orderBy('lancamento')->get();
 
@@ -85,28 +83,38 @@ class EventController extends Controller
         
     }
 
-    public function edit_music($id){
+    public function editar_music($id){
 
         $albums = Album::orderBy('lancamento')->get();
 
-        $musicas = Musica::where([
-            ['id', 'like', $id]
-        ])->get();
+        $musicas = Musica::where([['id', 'like', $id]])->get();
 
         return view('admin.edit_music', ['albums' => $albums, 'musicas' => $musicas[0], 'id' => $id]);
     }
 
-    public function del_music($id){
+    public function update_music(Request $request){
 
-        $musicas = Musica::where([
-            ['id', 'like', $id]
-        ])->get();
+        Musica::findOrFail($request->id)->update($request->all());
+
+        return redirect('/dashboard/')->with('message','Música editada com sucesso!');
+    }
+
+    public function deletar_music($id){
+
+        $musicas = Musica::where([['id', 'like', $id]])->get();
 
         return view('admin.del_music', ['musicas' => $musicas[0], 'id' => $id]);
     }
 
+    public function destroy_music($id){
 
-    public function add_album(){
+        Musica::where([['id','like',$id]])->delete();
+
+        return redirect('/dashboard/')->with('message','Música deletada com sucesso!');
+    }
+
+
+    public function adicionar_album(){
 
         return view('admin.add_album');
     }
@@ -122,7 +130,7 @@ class EventController extends Controller
         
     }
 
-    public function edit_album($id){
+    public function editar_album($id){
 
         $albums = Album::orderBy('lancamento')->get();
         $musicas = Musica::orderBy('faixa')->get();
@@ -130,12 +138,25 @@ class EventController extends Controller
         return view('admin.edit_album', ['albums' => $albums[0], 'id' => $id]);
     }
 
-    public function del_album($id){
+    public function update_album(Request $request){
 
-        $albums = Album::where([
-            ['id', 'like', $id]
-        ])->get();
+        Album::findOrFail($request->id)->update($request->all());
+
+        return redirect('/dashboard/')->with('message','Álbum editada com sucesso!');
+    }
+
+    public function deletar_album($id){
+
+        $albums = Album::where([['id', 'like', $id]])->get();
 
         return view('admin.del_album', ['albums' => $albums[0], 'id' => $id]);
+    }
+
+    public function destroy_album($id){
+
+        Album::where([['id','like',$id]])->delete();
+        Musica::where([['album','like',$id]])->delete();
+
+        return redirect('/dashboard/')->with('message','Álbum deletado com sucesso!');
     }
 }

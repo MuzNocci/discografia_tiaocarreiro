@@ -34,14 +34,14 @@
 	</section>
     
 	<section class='body'>
-		<div class="">
+		<div style="text-align:right;">
 			<a href="/dashboard/adicionar/album/" class="btn btn-primary mt-2 mb-2">Adicionar Álbum</a> <a href="/dashboard/adicionar/musica/" class="btn btn-primary mt-2 mb-2">Adicionar Música</a>
 		</div>
 		@foreach ($albums as $album)
 			@if (in_array($album->id,$album_auth, true) || $search == "")
 			<table class="table table-hover">
 				<thead>
-					<tr>
+					<tr style="background-color:#C4C4C4;">
 						<th colspan="3"><b>Álbum:</b> {{$album->nome}}, {{$album->lancamento}}</th>
 						<th style="width:80px;"><a href="/dashboard/editar/album/{{$album->id}}"><img alt="Editar" title="Editar" style="width:20px;height:20px;" src="/assets/img/icons/pen-to-square-solid.svg"></a> | <a href="/dashboard/excluir/album/{{$album->id}}"><img style="width:20px;height:20px;" src="/assets/img/icons/trash-can-solid.svg"></a></th>
 					</tr>

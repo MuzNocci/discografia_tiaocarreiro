@@ -37,25 +37,27 @@
 		<div style="text-align:left;margin-bottom:20px;font-size:25px;">
 			<h4>Edite a faixa: "{{ $musicas->nome }}"</h4>
 		</div>
-		<form >
+		<form action="/dashboard/editar/musica/{{ $musicas->id }}" method="POST">
+			@csrf
+			@method('PUT')
 			<div class="row" style="margin-bottom:20px;">
 				<div class="col-3">
 					<label for="inputState">Faixa</label>
-					<input type="text" class="form-control" placeholder="Faixa" value="{{ $musicas->faixa }}">
+					<input id="faixa" name="faixa" type="text" class="form-control" placeholder="Faixa" value="{{ $musicas->faixa }}">
 				</div>
 				<div class="col-6">
 					<label for="inputState">Nome</label>
-					<input type="text" class="form-control" placeholder="Nome da faixa" value="{{ $musicas->nome }}">
+					<input id="nome" name="nome" type="text" class="form-control" placeholder="Nome da faixa" value="{{ $musicas->nome }}">
 				</div>
 				<div class="col-3">
 				<label for="inputState">Duração</label>
-					<input type="text" class="form-control" placeholder="Duração" value="{{ $musicas->duracao }}">
+					<input id="duracao" name="duracao" type="text" class="form-control" placeholder="Duração" value="{{ $musicas->duracao }}">
 				</div>
 			</div>
 			<div class="row" style="margin-bottom:45px;">
 				<div class="col">
 					<label for="inputState">Álbum</label>
-					<select id="inputState" class="form-control">
+					<select id="album" name="album" class="form-control">
 						@foreach ($albums as $album)
 						<option value="{{ $album->id }}" @if($album->id == $musicas->album) selected @endif>{{ $album->nome }}</option>
 						@endforeach

@@ -34,12 +34,15 @@
 	</section>
     
 	<section class='body'>
-		<form>
+		<form action="/dashboard/excluir/musica/{{ $musicas->id }}" method="POST">
 			<div style="text-align:left;margin-bottom:20px;font-size:25px;">
 				<h4>Você deseja excluir a faixa <b>"{{ $musicas->nome }}"</b>?</h4>
 			</div>
 			<div class="">
-				<a href="/dashboard/" class="btn btn-secondary mt-2 mb-2" style="width:120px;">Cancelar</a> <a href="#" class="btn btn-danger mt-2 mb-2" style="width:120px;">Excluir</a>
+				@csrf
+				@method('DELETE')
+				<a href="/dashboard/" class="btn btn-secondary mt-2 mb-2" style="width:120px;">Cancelar</a> 
+				<button type="submit" class="btn btn-danger mt-2 mb-2" style="width:120px;">Excluir</button>
 			</div>
 		</form>
 	</section>

@@ -36,7 +36,7 @@
 			@if (in_array($album->id,$album_auth, true) || $search == "")
 			<table class="table table-hover">
 				<thead>
-					<tr>
+					<tr style="background-color:#C4C4C4;">
 						<th scope="col" colspan="3"><b>Álbum:</b> {{$album->nome}}, {{$album->lancamento}}</th>
 					</tr>
 					<tr>
@@ -64,7 +64,11 @@
 
 		<table style="margin-top:30px;margin-bottom:30px;">
 			<tr>
+				@if ($search)
 				<th colspan="4">Não encontramos nenhuma música, pesquisando por <b>"{{$search}}"</b>.</th>
+				@else
+				<th colspan="4">Não encontramos nenhuma música cadastrada.</th>
+				@endif
 			</tr>
 		</table>
 

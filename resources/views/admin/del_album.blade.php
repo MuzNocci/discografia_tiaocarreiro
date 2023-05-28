@@ -34,15 +34,18 @@
 	</section>
     
 	<section class='body'>
-		<form>
+		<form action="/dashboard/excluir/album/{{ $albums->id }}" method="POST">
 			<div style="text-align:left;margin-bottom:20px;font-size:25px;">
 				<h4>Você deseja excluir o álbum <b>"{{ $albums->nome }}"</b>?</h4>
 			</div>
 			<div style="text-align:left;margin-bottom:20px;font-size:25px;">
-				<h6 style="color:#B90000;"><b>OBS:</b> Serão exclusas as faixas cadastradas no neste álbum.</h6>
+				<h6 style="color:#B90000;"><b>OBS:</b> Também serão exclusas as faixas cadastradas no neste álbum.</h6>
 			</div>
 			<div class="">
-				<a href="/dashboard/" class="btn btn-secondary mt-2 mb-2" style="width:120px;">Cancelar</a> <a href="#" class="btn btn-danger mt-2 mb-2" style="width:120px;">Excluir</a>
+				@csrf
+				@method('DELETE')
+					<a href="/dashboard/" class="btn btn-secondary mt-2 mb-2" style="width:120px;">Cancelar</a> 
+					<button type="submit" class="btn btn-danger mt-2 mb-2" style="width:120px;">Excluir</button>
 			</div>
 		</form>
 	</section>
