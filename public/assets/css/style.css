@@ -6,6 +6,14 @@ body{
 	text-align: center;
 	margin: 0px;
 }
+body a{
+	color:black;
+	text-decoration: none;
+}
+body a:hover{
+	color:blue;
+	text-decoration: none;
+}
 .head{
 	position: flex;
     margin-top: 50px;

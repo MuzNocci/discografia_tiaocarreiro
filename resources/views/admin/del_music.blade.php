@@ -34,38 +34,13 @@
 	</section>
     
 	<section class='body'>
-		<div style="text-align:left;margin-bottom:20px;font-size:25px;">
-			<h4>Edite a faixa: "{{ $musicas->nome }}"</h4>
-		</div>
-		<form >
-			<div class="row" style="margin-bottom:20px;">
-				<div class="col-3">
-					<label for="inputState">Faixa</label>
-					<input type="text" class="form-control" placeholder="Faixa" value="{{ $musicas->faixa }}">
-				</div>
-				<div class="col-6">
-					<label for="inputState">Nome</label>
-					<input type="text" class="form-control" placeholder="Nome da faixa" value="{{ $musicas->nome }}">
-				</div>
-				<div class="col-3">
-				<label for="inputState">Duração</label>
-					<input type="text" class="form-control" placeholder="Duração" value="{{ $musicas->duracao }}">
-				</div>
+		<form>
+			<div style="text-align:left;margin-bottom:20px;font-size:25px;">
+				<h4>Você deseja excluir a faixa <b>"{{ $musicas->nome }}"</b>?</h4>
 			</div>
-			<div class="row" style="margin-bottom:45px;">
-				<div class="col">
-					<label for="inputState">Álbum</label>
-					<select id="inputState" class="form-control">
-						@foreach ($albums as $album)
-						<option value="{{ $album->id }}" @if($album->id == $musicas->album) selected @endif>{{ $album->nome }}</option>
-						@endforeach
-					</select>
-				</div>
+			<div class="">
+				<a href="/dashboard/" class="btn btn-secondary mt-2 mb-2" style="width:120px;">Cancelar</a> <a href="#" class="btn btn-danger mt-2 mb-2" style="width:120px;">Excluir</a>
 			</div>
-			<div style="margin-bottom:30px;text-align:right;">
-				<a href="/dashboard/" class="btn btn-secondary" style="width:120px;">Cancelar</a> <button type="submit" class="btn btn-primary" style="width:120px;">Salvar</button>
-			</div>	
-
 		</form>
 	</section>
 

@@ -20,13 +20,16 @@
 
 	<section class='head'>
 		<header>
+			<div class="container" style="text-align:right;margin-bottom:10px;">
+				<form action="/logout" method="POST">@csrf Olá, {{ Auth::user()->name }}! Deseja <a href="/logout" onclick="event.preventDefault(); this.closest('form').submit();">Sair</a>?</form>
+			</div>
 			<div class="container d-flex flex-wrap justify-content-center">
-				<a href="/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto">
-					<span class="fs-4 logo"><img src="../assets/img/logo.png"></span>
+				<a href="/dashboard/" class="d-flex align-items-center mb-3 mb-lg-0 me-lg-auto">
+					<span class="fs-4 logo"><img src="/assets/img/logo.png"></span>
 				</a>
-				<form action="/" method="GET" class="col-auto col-lg-4 mb-lg-0 search">
-					<input name="search" id="search" type="search" class="form-control" placeholder="Qual música deseja pesquisar?" aria-label="Search">
-				</form>
+				<a href="/dashboard/" class="d-flex" style="text-align:right;margin-top:25px;"> 
+					Voltar para o Dashboard
+				</a>
 			</div>
 		</header>
 	</section>
