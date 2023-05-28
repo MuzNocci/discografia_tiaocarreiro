@@ -39,7 +39,7 @@
 				<h4>Você deseja excluir o álbum <b>"{{ $albums->nome }}"</b>?</h4>
 			</div>
 			<div style="text-align:left;margin-bottom:20px;font-size:25px;">
-				<h6 style="color:#B90000;"><b>OBS:</b> Também serão exclusas as faixas cadastradas no neste álbum.</h6>
+				<h6 style="color:#B90000;"><b>OBS:</b> Também serão exclusas as faixas cadastradas para este álbum.</h6>
 			</div>
 			<div class="">
 				@csrf

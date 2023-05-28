@@ -35,7 +35,7 @@
     
 	<section class='body'>
 		<div style="text-align:right;">
-			<a href="/dashboard/adicionar/album/" class="btn btn-primary mt-2 mb-2">Adicionar Álbum</a> <a href="/dashboard/adicionar/musica/" class="btn btn-primary mt-2 mb-2">Adicionar Música</a>
+			<a href="/dashboard/adicionar/album/" class="btn btn-primary mt-2 mb-2">Adicionar Álbum</a>@if($album_registros > 0) <a href="/dashboard/adicionar/musica/" class="btn btn-primary mt-2 mb-2">Adicionar Música</a>@endif
 		</div>
 		@foreach ($albums as $album)
 			@if (in_array($album->id,$album_auth, true) || $search == "")
@@ -72,7 +72,11 @@
 
 		<table style="margin-top:30px;margin-bottom:30px;">
 			<tr>
-				<th colspan="4">Não encontramos nenhuma música, pesquisando por <b>"{{$search}}"</b>.</th>
+				@if ($search)
+				<th colspan="4">Não encontramos nenhuma faixa, pesquisando por <b>"{{$search}}"</b>.</th>
+				@else
+				<th colspan="4">Não encontramos nenhuma faixa cadastrada.</th>
+				@endif
 			</tr>
 		</table>
 
