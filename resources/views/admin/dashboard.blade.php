@@ -42,14 +42,14 @@
 			<table class="table table-hover">
 				<thead>
 					<tr>
-						<th scope="col" colspan="3"><b>Álbum:</b> {{$album->nome}}, {{$album->lancamento}}</th>
-						<th scope="col" style="width:60px;"><a href="/dashboard/editar/album/{{$album->id}}"><button type="button" title="Editar" alt="Editar" class="btn btn-primary btn-sm" style="height:30px;">E</button></a> | <a href="/dashboard/excluir/album/{{$album->id}}"><button type="button" title="Excluir" alt="Excluir" class="btn btn-danger btn-sm" style="height:30px;">X</button></a></th>
+						<th colspan="3"><b>Álbum:</b> {{$album->nome}}, {{$album->lancamento}}</th>
+						<th style="width:80px;"><a href="/dashboard/editar/album/{{$album->id}}"><img alt="Editar" title="Editar" style="width:20px;height:20px;" src="/assets/img/icons/pen-to-square-solid.svg"></a> | <a href="/dashboard/excluir/album/{{$album->id}}"><img style="width:20px;height:20px;" src="/assets/img/icons/trash-can-solid.svg"></a></th>
 					</tr>
 					<tr>
 						<th scope="col" style="width:40px;">Nº</th>
 						<th scope="col">Faixa</th>
 						<th scope="col" style="width:60px;">Duração</th>
-						<th scope="col" style="width:90px;">Ações</th>
+						<th scope="col" style="width:70px;">Ações</th>
 					</tr>
 				</thead>
 				@foreach ($musicas as $musica)
@@ -59,7 +59,7 @@
 							<td>{{$musica->faixa}}</td>
 							<td>{{$musica->nome}}</td>
 							<td>{{$musica->duracao}}</td>
-							<td><a href="/dashboard/editar/musica/{{$musica->id}}"><button type="button" title="Editar" alt="Editar" class="btn btn-primary btn-sm" style="height:30px;">E</button></a> | <a href="/dashboard/excluir/musica/{{$musica->id}}"><button type="button" title="Excluir" alt="Excluir" class="btn btn-danger btn-sm" style="height:30px;">X</button></a></td>
+							<td><a href="/dashboard/editar/musica/{{$musica->id}}"><img alt="Editar" title="Editar" style="width:20px;height:20px;" src="/assets/img/icons/pen-to-square-solid.svg"></a> | <a href="/dashboard/excluir/musica/{{$musica->id}}"><img style="width:20px;height:20px;" src="/assets/img/icons/trash-can-solid.svg"></a></td>
 						</tr>
 					</tbody>
 					@endif

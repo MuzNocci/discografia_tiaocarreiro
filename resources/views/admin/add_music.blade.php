@@ -35,27 +35,28 @@
     
 	<section class='body'>
 		<div style="text-align:left;margin-bottom:20px;font-size:25px;">
-			<h4>Adicine uma faixa:</h4>
+			<h4>Adicione uma faixa:</h4>
 		</div>
-		<form >
+		<form action="/dashboard/adicionar/musica/" method="POST">
+			@csrf
 			<div class="row" style="margin-bottom:20px;">
 				<div class="col-3">
 					<label for="inputState">Faixa</label>
-					<input type="text" class="form-control" placeholder="Faixa">
+					<input id="faixa" name="faixa" type="text" class="form-control" placeholder="Faixa">
 				</div>
 				<div class="col-6">
 					<label for="inputState">Nome</label>
-					<input type="text" class="form-control" placeholder="Nome da faixa">
+					<input id="nome" name="nome" type="text" class="form-control" placeholder="Nome da faixa">
 				</div>
 				<div class="col-3">
 				<label for="inputState">Duração</label>
-					<input type="text" class="form-control" placeholder="Duração">
+					<input id="duracao" name="duracao" type="text" class="form-control" placeholder="Duração">
 				</div>
 			</div>
 			<div class="row" style="margin-bottom:45px;">
 				<div class="col">
 					<label for="inputState">Álbum</label>
-					<select id="inputState" class="form-control">
+					<select id="album" name="album" class="form-control">
 						@foreach ($albums as $album)
 						<option value="{{ $album->id }}">{{ $album->nome }}</option>
 						@endforeach
@@ -65,7 +66,6 @@
 			<div style="margin-bottom:30px;text-align:right;">
 				<a href="/dashboard/" class="btn btn-secondary" style="width:120px;">Cancelar</a> <button type="submit" class="btn btn-primary" style="width:120px;">Salvar</button>
 			</div>	
-
 		</form>
 	</section>
 

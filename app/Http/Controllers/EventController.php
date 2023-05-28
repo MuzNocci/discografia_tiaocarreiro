@@ -72,6 +72,19 @@ class EventController extends Controller
         return view('admin.add_music', ['albums' => $albums]);
     }
 
+    public function register_music(Request $request){
+
+        $musica = new Musica;
+        $musica->album = $request->album;
+        $musica->faixa = $request->faixa;
+        $musica->nome = $request->nome;
+        $musica->duracao = $request->duracao;
+        $musica->save();
+
+        return redirect('/dashboard/');
+        
+    }
+
     public function edit_music($id){
 
         $albums = Album::orderBy('lancamento')->get();
@@ -93,13 +106,36 @@ class EventController extends Controller
     }
 
 
+    public function add_album(){
+
+        return view('admin.add_album');
+    }
+
+    public function register_album(Request $request){
+
+        $album = new Album;
+        $album->nome = $request->nome;
+        $album->lancamento = $request->lancamento;
+        $album->save();
+
+        return redirect('/dashboard/');
+        
+    }
+
     public function edit_album($id){
 
         $albums = Album::orderBy('lancamento')->get();
         $musicas = Musica::orderBy('faixa')->get();
 
-        return view('admin.edit_music', ['albums' => $albums, 'musicas' => $musicas, 'id' => $id]);
+        return view('admin.edit_album', ['albums' => $albums[0], 'id' => $id]);
     }
 
+    public function del_album($id){
 
+        $albums = Album::where([
+            ['id', 'like', $id]
+        ])->get();
+
+        return view('admin.del_album', ['albums' => $albums[0], 'id' => $id]);
+    }
 }

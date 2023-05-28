@@ -5,7 +5,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Supliu Teste - ">
+        <meta name="description" content="Supliu Teste - Discografia Tião Carreiro e Pardinho">
         <meta name="author" content="Müller Nocciolli">
 
         <title>Discografia - Tião Carreiro e Pardinho</title>
@@ -34,23 +34,16 @@
 	</section>
     
 	<section class='body'>
-		<div style="text-align:left;margin-bottom:20px;font-size:25px;">
-			<h4>Edite a faixa: "{{ $albums->nome }}"</h4>
-		</div>
-		<form >
-			<div class="row" style="margin-bottom:20px;">
-				<div class="col-9">
-					<label for="inputState">Nome</label>
-					<input type="text" class="form-control" placeholder="Nome da faixa" value="{{ $albums->nome }}">
-				</div>
-				<div class="col-3">
-					<label for="inputState">Lançamento</label>
-					<input type="text" class="form-control" placeholder="Duração" value="{{ $albums->lancamento }}">
-				</div>
+		<form>
+			<div style="text-align:left;margin-bottom:20px;font-size:25px;">
+				<h4>Você deseja excluir o álbum <b>"{{ $albums->nome }}"</b>?</h4>
 			</div>
-			<div style="margin-bottom:30px;text-align:right;">
-				<a href="/dashboard/" class="btn btn-secondary" style="width:120px;">Cancelar</a> <button type="submit" class="btn btn-primary" style="width:120px;">Salvar</button>
-			</div>	
+			<div style="text-align:left;margin-bottom:20px;font-size:25px;">
+				<h6 style="color:#B90000;"><b>OBS:</b> Serão exclusas as faixas cadastradas no neste álbum.</h6>
+			</div>
+			<div class="">
+				<a href="/dashboard/" class="btn btn-secondary mt-2 mb-2" style="width:120px;">Cancelar</a> <a href="#" class="btn btn-danger mt-2 mb-2" style="width:120px;">Excluir</a>
+			</div>
 		</form>
 	</section>
 

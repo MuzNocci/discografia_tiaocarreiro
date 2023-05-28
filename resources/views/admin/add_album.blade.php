@@ -5,7 +5,7 @@
 
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <meta name="description" content="Supliu Teste - ">
+        <meta name="description" content="Supliu Teste - Discografia Tião Carreiro e Pardinho">
         <meta name="author" content="Müller Nocciolli">
 
         <title>Discografia - Tião Carreiro e Pardinho</title>
@@ -35,17 +35,18 @@
     
 	<section class='body'>
 		<div style="text-align:left;margin-bottom:20px;font-size:25px;">
-			<h4>Edite a faixa: "{{ $albums->nome }}"</h4>
+			<h4>Adicione um álbum:</h4>
 		</div>
-		<form >
-			<div class="row" style="margin-bottom:20px;">
+		<form action="/dashboard/adicionar/album/" method="POST">
+			@csrf
+			<div class="row" style="margin-bottom:45px;">
 				<div class="col-9">
 					<label for="inputState">Nome</label>
-					<input type="text" class="form-control" placeholder="Nome da faixa" value="{{ $albums->nome }}">
+					<input id="nome" name="nome" type="text" class="form-control" placeholder="Nome do album" required>
 				</div>
 				<div class="col-3">
 					<label for="inputState">Lançamento</label>
-					<input type="text" class="form-control" placeholder="Duração" value="{{ $albums->lancamento }}">
+					<input id="lancamento" name="lancamento" type="text" class="form-control" placeholder="Lançamento" required>
 				</div>
 			</div>
 			<div style="margin-bottom:30px;text-align:right;">
