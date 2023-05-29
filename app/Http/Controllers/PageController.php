@@ -16,9 +16,7 @@ class PageController extends Controller
 
         if ($search){
 
-            $musicas = Musica::orderBy('faixa')->where([
-                ['nome', 'like', '%'.$search.'%']
-            ])->get();
+            $musicas = Musica::orderBy('faixa')->where([['nome', 'like', '%'.$search.'%']])->get();
 
             foreach ($musicas as $musica){
                 $albums_auth[] = $musica->album;
